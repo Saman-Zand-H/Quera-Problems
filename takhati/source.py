@@ -1,0 +1,1 @@
+print(" ".join(sorted([*map(lambda i: i if (ord(i)-97)%2==0 else i.upper(), list(str(input())))], reverse=True)))
