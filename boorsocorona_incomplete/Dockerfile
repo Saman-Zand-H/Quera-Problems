@@ -1,12 +1,12 @@
-FROM python:3.9.7
+FROM python:3.10.4-slim
 
 WORKDIR /app/codecup/
 
-RUN apt-get update && apt-get install -y curl
+RUN apt update && apt install -y curl
 
 COPY requirements.txt /app/codecup
-ENV PIP_NO_CACHE_DIR 1
-RUN pip install -r requirements.txt
-RUN pip install psycopg2-binary
+
+RUN pip --timeout=20000000 install -r requirements.txt
+RUN pip --timeout=20000000 install psycopg2-binary
 
 COPY . .
