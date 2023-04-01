@@ -19,7 +19,7 @@ class CartForm(forms.Form):
             self.fields[f"color_{i.id}"] = forms.ChoiceField(
                 choices=i.colors_available.values_list("name", "name"),
                 required=False,
-                initial=min(i.colors_available.order_by("name").first().name)
+                initial=i.colors_available.order_by("name").first().name
             )
             
     def clean(self):
